@@ -1,5 +1,6 @@
 node_modules
 *.map
 *.js
+!webpack.config.js
 !riot-app.js
 !loaders/*.js
