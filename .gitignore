@@ -1,0 +1,5 @@
+node_modules
+*.map
+*.js
+!riot-app.js
+!loaders/*.js
