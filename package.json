@@ -7,6 +7,9 @@
   },
   "devDependencies": {
     "html-loader": "^0.4.3",
+    "jquery": "^3.1.0",
+    "less": "^2.7.1",
+    "loader-utils": "^0.2.15",
     "riot": "^3.0.0-alpha.5",
     "riotjs-loader": "^3.0.0",
     "ts-loader": "^0.8.2",

@@ -1,4 +1,5 @@
 var path = require('path')
+var typescriptDeclarationInjectingLoader = require.resolve('./loaders/typescript-declaration-injecting-loader')
 var htmlRepairLoader = require.resolve('./loaders/html-repair-loader')
 module.exports = {
   entry: './src/riot-app.js',
@@ -16,7 +17,7 @@ module.exports = {
     loaders: [
       {
         test: /\.tag$/,
-        loader: htmlRepairLoader + '!html!riotjs?type=typescript'
+        loader: htmlRepairLoader + '!html!riotjs?type=typescript!' + typescriptDeclarationInjectingLoader + '?src=src/app.d.ts'
       },
       {
         test: /\.ts$/,
