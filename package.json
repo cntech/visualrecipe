@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "src/app.js",
   "scripts": {
-    "serve": "node_modules/.bin/webpack-dev-server"
+    "serve": "node_modules/.bin/webpack-dev-server --hot --inline"
   },
   "devDependencies": {
     "html-loader": "^0.4.3",
