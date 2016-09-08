@@ -1,4 +1,4 @@
-module.exports = function(source) {
+module.exports = function(source, map) {
   this.cacheable()
   var result = source
     .replace(/^module.exports = "/, '')
@@ -7,5 +7,5 @@ module.exports = function(source) {
       return "' + require('" + value + "') + '"
     })
     .replace(/\\n/g, '\n')
-  return result
+  this.callback(null, result, map)
 }
