@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'url?mimetype=image/svg+xml'
+        loader: 'url?mimetype=image/svg+xml&limit=1'
       }
     ]
   },
