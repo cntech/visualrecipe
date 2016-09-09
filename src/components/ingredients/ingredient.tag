@@ -2,7 +2,7 @@ let riot = require('riot')
 function requireAll(requireContext) {
   return requireContext.keys().map(requireContext)
 }
-requireAll(require.context('./icons', true, /.tag$/))
+requireAll(require.context('./database', true, /.tag$/))
 // see https://webpack.github.io/docs/context.html
 <ingredient draggable="draggable" ondragstart={ handleDragStart }>
   <script type="typescript">
