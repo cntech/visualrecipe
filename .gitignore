@@ -9,3 +9,6 @@ public/*
 
 # OS X
 .DS_Store
+
+# WebStorm
+.idea
