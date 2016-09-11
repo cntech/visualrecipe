@@ -6,18 +6,25 @@ requireAll(require.context('./database', true, /.tag$/))
 // see https://webpack.github.io/docs/context.html
 <ingredient draggable="draggable" ondragstart={ handleDragStart }>
   <script type="typescript">
+    let riot = require<any>('riot')
     class IngredientTag {
+      private prefix: string = 'ingredient'
       constructor(public identifier: string) {}
       toHtml(): string {
-        let prefix: string = 'ingredient'
+        let prefix: string = this.prefix
         let id: string = this.identifier
         // return `<${prefix}-${id}></${prefix}-${id}>` // FIXME make this work
         return '<'+prefix+'-'+id+'></'+prefix+'-'+id+'>'
       }
+      tagName(): string {
+        return this.prefix + '-' + this.identifier
+      }
     }
     let identifier: string = this.opts.identifier
-    let html: string = new IngredientTag(identifier).toHtml()
+    let ingredientTag = new IngredientTag(identifier)
+    let html: string = ingredientTag.toHtml()
     this.root.innerHTML = html
+    riot.mount(ingredientTag.tagName())
     this.handleDragStart = (e) => {
       e.dataTransfer.setData('text/plain', identifier)
     }
