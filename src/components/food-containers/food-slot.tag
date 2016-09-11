@@ -11,14 +11,14 @@ let riot = require('riot')
   </div>
   <script type="typescript">
     let $ = require<any>('jquery')
-    interface IStatefulTag {
+    interface StatefulTag {
       update(): void,
       state: State
     }
     class State {
       private _defined: boolean = false
       private _receiving: boolean = false
-      constructor(private owner: IStatefulTag) {
+      constructor(private owner: StatefulTag) {
         owner.state = this
       }
       defined(): boolean { return this._defined }
