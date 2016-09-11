@@ -6,3 +6,6 @@ public/*
 !riot-app.js
 !loaders/*.js
 !public/index.html
+
+# OS X
+.DS_Store
