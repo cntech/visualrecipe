@@ -9,7 +9,7 @@ let riot = require('riot')
     <div if={ state.receiving() } class="receiving">{ opts.name }</div>
     <ingredient if={ state.appearingDefined() } identifier={ ingredient }></ingredient>
   </div>
-  <script type="typescript">
+  <script type="text/typescript">
     let $ = require<any>('jquery')
     interface StatefulTag {
       update(): void,

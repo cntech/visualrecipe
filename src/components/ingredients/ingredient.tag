@@ -5,7 +5,7 @@ function requireAll(requireContext) {
 requireAll(require.context('./database', true, /.tag$/))
 // see https://webpack.github.io/docs/context.html
 <ingredient draggable="draggable" ondragstart={ handleDragStart }>
-  <script type="typescript">
+  <script type="text/typescript">
     let riot = require<any>('riot')
     class IngredientTag {
       private prefix: string = 'ingredient'

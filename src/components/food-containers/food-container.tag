@@ -3,7 +3,7 @@ let foodSlot = require('./food-slot')
 <food-container>
   <img src="./icons/pan.svg" alt="pan">
   <food-slot each={ slots } name={ name } x={ x } y={ y }></food-slot>
-  <script type="typescript">
+  <script type="text/typescript">
     class FoodSlotConfig {
       constructor(public name: string, public x: number, public y: number) {}
     }
