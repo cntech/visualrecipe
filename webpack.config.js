@@ -7,6 +7,7 @@ var sourcePaths = [
   'lib/database/implemented/browser/'
 ]
 var riotTypescriptOptions = encodeURIComponent(JSON.stringify({
+  strictNullChecks: true,
   baseUrl: './src',
   paths: {
     '*': sourcePaths.map(function(sourcePath) { return sourcePath + '*' })
