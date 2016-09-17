@@ -6,6 +6,7 @@ public/*
 !riot-app.js
 !loaders/*.js
 !public/index.html
+typings
 
 # OS X
 .DS_Store
