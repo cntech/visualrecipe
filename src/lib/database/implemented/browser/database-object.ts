@@ -4,14 +4,18 @@ export class DatabaseObject {
   exists(): boolean {
     return typeof this.rawObject !== 'undefined'
   }
-  getRaw(): Object {
+  getRaw(): Object | undefined {
     return this.rawObject
   }
-  getChild(key: string): DatabaseObject {
-    return new DatabaseObject(this.rawObject[key])
+  getChild(key: string): DatabaseObject | undefined {
+    if(this.rawObject) {
+      return new DatabaseObject(this.rawObject[key])
+    }
   }
   setChild(key: string, value: DatabaseObject) {
-    this.rawObject[key] = value.rawObject
+    if(this.rawObject) {
+      this.rawObject[key] = value.rawObject
+    }
   }
   findSubObject(path: DatabasePath, touch: boolean, array: boolean): DatabaseObject {
     if(path.isEmpty()) {
@@ -26,7 +30,10 @@ export class DatabaseObject {
         return this
       }
     }
-    let nextObject: DatabaseObject = this.getChild(key)
+    let nextObject: DatabaseObject | undefined = this.getChild(key)
+    if(!nextObject) {
+      return new DatabaseObject(undefined)
+    }
     if(!nextObject.exists()) {
       // not found
       if(touch) {
@@ -36,10 +43,16 @@ export class DatabaseObject {
       }
     }
     if(!nextPath.isEmpty()) {
-      return nextObject.findSubObject(nextPath, touch, array)
+      if(nextObject) {
+        return nextObject.findSubObject(nextPath, touch, array)
+      }
     }
     // all other cases:
-    return nextObject
+    if(nextObject) {
+      return nextObject
+    } else {
+      return new DatabaseObject(undefined)
+    }
   }
   existsSubObject(path: DatabasePath): boolean {
     return this.findSubObject(path, false, false).exists()

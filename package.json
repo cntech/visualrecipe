@@ -17,6 +17,7 @@
     "loader-utils": "^0.2.15",
     "mocha": "^3.0.2",
     "riot": "^3.0.0-alpha.5",
+    "riot-route": "^2.5.0",
     "riotjs-loader": "git+https://github.com/cntech/riotjs-loader.git",
     "ts-loader": "^0.8.2",
     "typescript": "^2.1.0-dev.20160911",

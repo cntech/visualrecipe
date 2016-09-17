@@ -3,14 +3,19 @@ let riot = require('riot')
   <table>
     <tbody>
       <tr each={ recipes }>
-        <td>{ name }</td>
+        <td><a href={ recipeLink(id) }>{ name }</a></td>
       </tr>
     </tbody>
   </table>
   <script type="text/typescript">
+    let path = require<any>('path')
     import {Config} from 'config'
     import {BrowserDatabase} from 'browser-database'
     let db = BrowserDatabase.installFromConfig(Config.database)
-    this.recipes = db.get('recipes', r => true)
+    let me = this
+    me.recipes = db.get('recipes', r => true)
+    me.recipeLink = (recipeId: string) => {
+      return path.join(Config.pages.recipe.route, recipeId)
+    }
   </script>
 </recipe-table>

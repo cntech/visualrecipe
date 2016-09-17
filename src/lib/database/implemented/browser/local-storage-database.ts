@@ -1,5 +1,5 @@
 export class LocalStorageDatabase {
-  protected cache: Object | undefined
+  protected cache: Object
   constructor(protected key: string) {}
   getObject(): Object {
     let jsonString: string = localStorage[this.key] || '{}'

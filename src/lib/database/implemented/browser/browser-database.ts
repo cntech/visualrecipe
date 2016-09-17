@@ -45,11 +45,11 @@ export class BrowserDatabase implements Database {
       throw new Error('please call install before operating on the database')
     }
   }
-  getTable(tableName: string): Object[] {
+  getTable(tableName: string): Object[] | undefined {
     this.testInstallation()
     let databaseObject = this.getRootObject()
     let tableDatabaseObject = databaseObject.getSubObject(new DatabasePath([tableName]))
-    let table: Object = tableDatabaseObject.getRaw()
+    let table: Object | undefined = tableDatabaseObject.getRaw()
     if(Array.isArray(table)) { // make sure Object is an Array
       return <Object[]>table
     }
@@ -58,13 +58,13 @@ export class BrowserDatabase implements Database {
     this.testInstallation()
     let databaseObject = this.getRootObject()
     let tableParentDatabaseObject = databaseObject.getSubObject(new DatabasePath([]))
-    let tableParent: Object = tableParentDatabaseObject.getRaw()
+    let tableParent: Object | undefined = tableParentDatabaseObject.getRaw()
     if(tableParent) {
       tableParent[tableName] = table
     }
   }
   create(tableName: string, data: Object) {
-    let table: Object[] = this.getTable(tableName)
+    let table: Object[] | undefined = this.getTable(tableName)
     if(table) {
       let newId
       let result
@@ -77,14 +77,25 @@ export class BrowserDatabase implements Database {
       this.save()
     }
   }
-  get(tableName: string, selector: (Object) => boolean): Object[] {
-    let table: Object[] = this.getTable(tableName)
+  get(tableName: string, selector: (Object) => boolean): Object[] | undefined {
+    let table: Object[] | undefined = this.getTable(tableName)
     if(table) {
       return table.filter(selector)
     }
   }
+  getById(table: string, id: string): Object | undefined {
+    let results: Object[] | undefined = this.get(
+      table,
+      (record: Object) => {
+        return (<any>record).id === id
+      }
+    )
+    if(results) {
+      return results[0]
+    }
+  }
   update(tableName: string, selector: (Object) => boolean, data: Object) {
-    let table: Object[] = this.getTable(tableName)
+    let table: Object[] | undefined = this.getTable(tableName)
     if(table) {
       table.filter(selector).forEach((record: Object) => {
         (<any>Object).assign(
@@ -95,11 +106,22 @@ export class BrowserDatabase implements Database {
       this.save()
     }
   }
+  updateById(table: string, id: string, data: Object) {
+    this.update(
+      table,
+      (record: Object) => {
+        return (<any>record).id === id
+      },
+      data
+    )
+  }
   destroy(tableName: string, selector: (Object) => boolean) {
-    let table: Object[] = this.getTable(tableName)
+    let table: Object[] | undefined = this.getTable(tableName)
     let inverseSelector = record => !selector(record)
-    let result: Object[] = table.filter(inverseSelector)
-    this.setTable(tableName, result)
-    this.save()
+    if(table) {
+      let result: Object[] = table.filter(inverseSelector)
+      this.setTable(tableName, result)
+      this.save()
+    }
   }
 }
