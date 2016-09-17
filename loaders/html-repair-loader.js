@@ -6,6 +6,7 @@ module.exports = function(source, map) {
     .replace(/" \+ require\("([^"]+)"\) \+ "/g, function(all, value) {
       return "' + require('" + value + "') + '"
     })
+    .replace(/\\"/g, '"')
     .replace(/\\n/g, '\n')
   this.callback(null, result, map)
 }
