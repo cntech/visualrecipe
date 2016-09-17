@@ -3,18 +3,23 @@
   "version": "1.0.0",
   "main": "src/app.js",
   "scripts": {
-    "serve": "node_modules/.bin/webpack-dev-server --hot --inline"
+    "serve": "node_modules/.bin/webpack-dev-server --hot --inline",
+    "compile": "node_modules/.bin/webpack",
+    "compile-tests": "node_modules/.bin/webpack --config webpack.testing.config.js"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "file-loader": "^0.9.0",
+    "glob": "^7.0.6",
     "html-loader": "^0.4.3",
     "jquery": "^3.1.0",
     "less": "^2.7.1",
     "loader-utils": "^0.2.15",
+    "mocha": "^3.0.2",
     "riot": "^3.0.0-alpha.5",
-    "riotjs-loader": "^3.0.0",
+    "riotjs-loader": "git+https://github.com/cntech/riotjs-loader.git",
     "ts-loader": "^0.8.2",
-    "typescript": "^1.8.10",
+    "typescript": "^2.1.0-dev.20160911",
     "typescript-simple": "^5.0.2",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",

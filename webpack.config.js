@@ -1,6 +1,17 @@
 var path = require('path')
 var typescriptDeclarationInjectingLoader = require.resolve('./loaders/typescript-declaration-injecting-loader')
 var htmlRepairLoader = require.resolve('./loaders/html-repair-loader')
+var sourcePaths = [
+  '',
+  'lib/',
+  'lib/database/implemented/browser/'
+]
+var riotTypescriptOptions = encodeURIComponent(JSON.stringify({
+  baseUrl: './src',
+  paths: {
+    '*': sourcePaths.map(function(sourcePath) { return sourcePath + '*' })
+  }
+}))
 module.exports = {
   entry: './src/riot-app.js',
   output: {
@@ -9,15 +20,13 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.js', '.tag'],
-    root: [
-      path.resolve('./src')
-    ]
+    root: sourcePaths.map(function(sourcePath) { return path.resolve('./src/' + sourcePath) })
   },
   module: {
     loaders: [
       {
         test: /\.tag$/,
-        loader: htmlRepairLoader + '!html!riotjs?type=typescript!' + typescriptDeclarationInjectingLoader + '?src=src/app.d.ts'
+        loader: htmlRepairLoader + '!html!riotjs?typescript='+riotTypescriptOptions+'!' + typescriptDeclarationInjectingLoader + '?src=src/app.d.ts'
       },
       {
         test: /\.ts$/,
