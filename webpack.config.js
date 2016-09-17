@@ -1,4 +1,5 @@
 var path = require('path')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var typescriptDeclarationInjectingLoader = require.resolve('./loaders/typescript-declaration-injecting-loader')
 var htmlRepairLoader = require.resolve('./loaders/html-repair-loader')
 var sourcePaths = [
@@ -36,9 +37,16 @@ module.exports = {
       {
         test: /\.svg$/,
         loader: 'url?mimetype=image/svg+xml&limit=1'
+      },
+      {
+        test: /\.less$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
       }
     ]
   },
+  plugins: [
+    new ExtractTextPlugin('bundle.css')
+  ],
   devtool: 'source-map',
   devServer: {
     contentBase: './public',
