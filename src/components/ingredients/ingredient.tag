@@ -40,6 +40,8 @@ requireAll(require.context('./database', true, /.tag$/))
   <style type="text/less" scoped>
     :scope {
       display: block;
+      position: relative;
+      z-index: 2;
     }
     img {
       width: 36px;

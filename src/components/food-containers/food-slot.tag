@@ -1,10 +1,11 @@
 let riot = require('riot')
 <food-slot>
-  <div
-    ondragover={ handleDragOver }
-    ondrop={ handleDrop }
-    ondragenter={ handleDragEnter }
-    ondragleave={ handleDragLeave }>
+  <div>
+    <div class="dropzone"
+      ondragover={ handleDragOver }
+      ondrop={ handleDrop }
+      ondragenter={ handleDragEnter }
+      ondragleave={ handleDragLeave }></div>
     <div if={ state.appearingEmpty() } class="empty">{ opts.name }</div>
     <div if={ state.receiving() } class="receiving">{ opts.name }</div>
     <ingredient if={ state.appearingDefined() } identifier={ ingredient }></ingredient>
@@ -92,16 +93,25 @@ let riot = require('riot')
 
   </script>
   <style type="text/less" scoped>
-    @color: gray;
+    @color: #ddd;
     @border-width: 1px;
     // @inner-size: 36px - 2 * @border-width;
     // for bootstrap (border-box):
     @inner-size: 36px;
+    @dropzone-size: 22px;
     :scope {
       display: block;
       position: absolute;
-      top: 0;
       left: 0;
+      top: 0;
+    }
+    div.dropzone {
+      position: absolute;
+      left: (@inner-size - @dropzone-size) * 0.5;
+      top: (@inner-size - @dropzone-size) * 0.5;
+      width: @dropzone-size;
+      height: @dropzone-size;
+      z-index: 1;
     }
     div.empty, div.receiving {
       width: @inner-size;
@@ -112,7 +122,7 @@ let riot = require('riot')
       text-align: center;
 
       color: @color;
-      border: @border-width solid @color;
+      // border: @border-width solid @color;
     }
     div.receiving {
       color: green;

@@ -5,14 +5,14 @@ let riot = require('riot')
     import {FoodSlotConfig} from 'components/food-containers/food-slot-config'
     this.getSlots = (): FoodSlotConfig[] => {
       let slots: FoodSlotConfig[] = []
-      let size = 36 // slot size
+      let size = 24 // slot size
       let base = {
-        x: size * 2,
-        y: size * 4 - /* fine tuning: */ 11
+        x: size * 3 /* fine tuning: */ + 6,
+        y: size * 5
       }
       let i = 1
-      for(let y = 0; y < 4; y++) {
-        for(let x = 0; x < 6; x++) {
+      for(let y = 0; y < 6; y++) {
+        for(let x = 0; x < 8; x++) {
           let name: string = String(i)
           slots.push(new FoodSlotConfig(name, base.x+x*size, base.y+y*size))
           i++

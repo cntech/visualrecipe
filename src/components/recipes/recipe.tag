@@ -13,28 +13,14 @@ require('components/food-containers/food-container-option')
           <button type="button"
             each={ stepButtons }
             onclick={ chooseStepCount(value) }
-            class="btn btn-default">{ text }</button>
+            class={ 'btn btn-default': true, 'active': active }>{ text }</button>
+        </div>
+        <div class="buttons">
+          <button type="submit" class="btn btn-primary">Save Recipe</button>
         </div>
       </div>
     </div>
-    <table>
-      <tbody>
-        <tr>
-          <td><ingredient identifier="apple"></ingredient></td>
-          <td><ingredient identifier="orange"></ingredient></td>
-          <td><ingredient identifier="banana"></ingredient></td>
-          <td><ingredient identifier="pineapple"></ingredient></td>
-        </tr>
-        <tr>
-          <td><food-container-option identifier="pan"></food-container-option></td>
-          <td><food-container-option identifier="pot"></food-container-option></td>
-        </tr>
-      </tbody>
-    </table>
     <recipe-step each={ steps }></recipe-step>
-    <div class="buttons">
-      <button type="submit" class="btn btn-primary">Save Recipe</button>
-    </div>
   </form>
   <script type="text/typescript">
     let path = require<any>('path')
@@ -93,6 +79,9 @@ require('components/food-containers/food-container-option')
     }
     me.setStepCount = (n) => {
       me.steps = me.allSteps.slice(0, n)
+      me.stepButtons.forEach((stepButton) => {
+        stepButton.active = stepButton.value == n
+      })
     }
     me.chooseStepCount = (n) => {
       return (e) => {
@@ -131,7 +120,7 @@ require('components/food-containers/food-container-option')
     }
     form {
       .buttons {
-        text-align: center;
+        display: inline-block;
       }
     }
   </style>

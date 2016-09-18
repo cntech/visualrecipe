@@ -27,6 +27,18 @@ require('bootstrap')
         </ul>
       </div>
     </div>
+    <table>
+      <tbody>
+        <tr>
+          <td><food-container-option identifier="pan"></food-container-option></td>
+          <td><food-container-option identifier="pot"></food-container-option></td>
+          <td><ingredient identifier="apple"></ingredient></td>
+          <td><ingredient identifier="orange"></ingredient></td>
+          <td><ingredient identifier="banana"></ingredient></td>
+          <td><ingredient identifier="pineapple"></ingredient></td>
+        </tr>
+      </tbody>
+    </table>
   </nav>
   <script type="text/typescript">
     let path = require<any>('path')
@@ -48,4 +60,12 @@ require('bootstrap')
         }
       })
   </script>
+  <style type="text/less" scoped>
+    nav {
+      table {
+        display: block;
+        padding: 15px;
+      }
+    }
+  </style>
 </page-header>

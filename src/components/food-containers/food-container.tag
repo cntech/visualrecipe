@@ -97,6 +97,7 @@ let foodSlot = require('./food-slot')
     }
     .food-container {
       img {
+        opacity: 0.3;
         width: 360px;
         height: 360px;
       }
