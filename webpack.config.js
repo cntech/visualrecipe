@@ -18,6 +18,7 @@ module.exports = {
   entry: './src/riot-app.js',
   output: {
     path: __dirname + '/public',
+    publicPath: '/',
     filename: 'bundle.js'
   },
   resolve: {
