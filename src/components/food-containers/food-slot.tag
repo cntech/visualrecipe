@@ -50,21 +50,51 @@ let riot = require('riot')
     }
     this.handleDrop = (e) => {
       e.preventDefault()
-      let ingredient: string = e.dataTransfer.getData('text/plain')
-      this.ingredient = ingredient
-      state.setDefined(true)
       state.setReceiving(false)
+      let json: string = e.dataTransfer.getData('text/plain')
+      let data = JSON.parse(json)
+      if(data.ingredient) {
+        this.ingredient = data.ingredient.identifier
+        state.setDefined(true)
+      }
     }
     let x: number = parseInt(this.opts.x)
     let y: number = parseInt(this.opts.y)
     this.on('mount', () => {
       $(this.root).css({ left: x, top: y })
     })
+
+    // take the promise of the following deferred object to see if the tag is completely rendered
+    this.readyDeferred = new $.Deferred()
+
+    this.one('mount', () => { // wait for mount, then access food container
+      this.readyDeferred.resolve()
+    })
+
+    // serialization support
+    this.setData = (data: Object) => {
+      let ingredient = (<any>data).ingredient
+      this.readyDeferred.promise().then(() => {
+        console.log('food slot ready')
+        this.ingredient = ingredient
+        if(this.ingredient) {
+          state.setDefined(true)
+        }
+      })
+    }
+    this.getData = (): Object => {
+      return {
+        ingredient: this.ingredient
+      }
+    }
+
   </script>
   <style type="text/less" scoped>
     @color: gray;
     @border-width: 1px;
-    @inner-size: 36px - 2 * @border-width;
+    // @inner-size: 36px - 2 * @border-width;
+    // for bootstrap (border-box):
+    @inner-size: 36px;
     :scope {
       display: block;
       position: absolute;

@@ -7,9 +7,16 @@ export class Config {
     base: '/'
   }
   static readonly pages = <PagesConfig>{
+    recipeTable: <PageConfig>{
+      title: 'My Recipes',
+      route: 'recipe-table',
+      menuLink: true,
+      databaseTable: 'recipes'
+    },
     recipe: <PageConfig>{
       title: 'Recipe',
       route: 'recipe',
+      menuLink: true,
       databaseTable: 'recipes'
     }
   }

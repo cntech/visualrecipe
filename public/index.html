@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=2">
     <title>Visual Recipe</title>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="/bundle.css" rel="stylesheet">
   </head>
   <body>
-    <page-content></page-content>
+    <page-header></page-header>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10"><page-content default-page="recipe-table"></page-content></div>
+        <div class="col-sm-1"></div>
+      </div>
+    </div>
     <script src="/bundle.js"></script>
   </body>
-  <style>
-    body {
-      font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-      padding: 0;
-      margin: 0;
-    }
-  </style>
 </html>

@@ -124,4 +124,12 @@ export class BrowserDatabase implements Database {
       this.save()
     }
   }
+  destroyById(table: string, id: string) {
+    this.destroy(
+      table,
+      (record: Object) => {
+        return (<any>record).id === id
+      }
+    )
+  }
 }

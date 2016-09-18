@@ -4,11 +4,11 @@ function requireAll(requireContext) {
 }
 requireAll(require.context('./database', true, /.tag$/))
 // see https://webpack.github.io/docs/context.html
-<ingredient draggable="draggable" ondragstart={ handleDragStart }>
+<food-container-option draggable="draggable" ondragstart={ handleDragStart }>
   <script type="text/typescript">
     let riot = require<any>('riot')
-    class IngredientTag {
-      private prefix: string = 'ingredient'
+    class FoodContainerTag {
+      private prefix: string = 'food-container'
       constructor(public identifier: string) {}
       toHtml(): string {
         let prefix: string = this.prefix
@@ -21,16 +21,15 @@ requireAll(require.context('./database', true, /.tag$/))
       }
     }
     let identifier: string = this.opts.identifier
-    let ingredientTag = new IngredientTag(identifier)
-    let html: string = ingredientTag.toHtml()
-    let me = this
+    let foodContainerTag = new FoodContainerTag(identifier)
+    let html: string = foodContainerTag.toHtml()
     this.on('mount', () => {
-      me.root.innerHTML = html
-      riot.mount(ingredientTag.tagName())
+      this.root.innerHTML = html
+      riot.mount(foodContainerTag.tagName())
     })
     this.handleDragStart = (e) => {
       let json: string = JSON.stringify({
-        ingredient: {
+        foodContainer: {
           identifier: identifier
         }
       })
@@ -46,4 +45,4 @@ requireAll(require.context('./database', true, /.tag$/))
       height: 36px;
     }
   </style>
-</ingredient>
+</food-container-option>
