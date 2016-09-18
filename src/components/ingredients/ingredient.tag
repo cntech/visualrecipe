@@ -4,8 +4,9 @@ function requireAll(requireContext) {
 }
 requireAll(require.context('./database', true, /.tag$/))
 // see https://webpack.github.io/docs/context.html
-<ingredient draggable="draggable" ondragstart={ handleDragStart }>
+<ingredient draggable="draggable" ondragstart={ handleDragStart } ondragend={ handleDragEnd }>
   <script type="text/typescript">
+    let $ = require<any>('jquery')
     let riot = require<any>('riot')
     class IngredientTag {
       private prefix: string = 'ingredient'
@@ -20,6 +21,9 @@ requireAll(require.context('./database', true, /.tag$/))
         return this.prefix + '-' + this.identifier
       }
     }
+
+    this.publisher = $({})
+
     let identifier: string = this.opts.identifier
     let ingredientTag = new IngredientTag(identifier)
     let html: string = ingredientTag.toHtml()
@@ -28,6 +32,10 @@ requireAll(require.context('./database', true, /.tag$/))
       me.root.innerHTML = html
       riot.mount(ingredientTag.tagName())
     })
+    this.on('unmount', () => {
+      console.log('ingredient unmount')
+      this.publisher.off() // remove all listeners
+    })
     this.handleDragStart = (e) => {
       let json: string = JSON.stringify({
         ingredient: {
@@ -35,6 +43,9 @@ requireAll(require.context('./database', true, /.tag$/))
         }
       })
       e.dataTransfer.setData('text/plain', json)
+    }
+    this.handleDragEnd = (e) => {
+      this.publisher.trigger('remove', [this])
     }
   </script>
   <style type="text/less" scoped>

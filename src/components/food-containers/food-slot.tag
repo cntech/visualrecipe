@@ -26,6 +26,14 @@ let riot = require('riot')
       setDefined(defined: boolean) {
         this._defined = defined
         this.owner.update()
+        let ingredient = (<any>this.owner).tags.ingredient
+        if(ingredient) {
+          let me = this
+          ingredient.publisher.on('remove', (e, ingredientTag) => {
+            me.setDefined(false)
+            delete (<any>this.owner).ingredient
+          })
+        }
       }
       receiving(): boolean { return this._receiving }
       setReceiving(receiving: boolean) {
@@ -77,7 +85,6 @@ let riot = require('riot')
       if(data) {
         let ingredient = (<any>data).ingredient
         this.readyDeferred.promise().then(() => {
-          console.log('food slot ready')
           this.ingredient = ingredient
           if(this.ingredient) {
             state.setDefined(true)
