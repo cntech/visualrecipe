@@ -12,7 +12,7 @@ export class LocalStorageDatabase {
   }
   generateUid(): string {
     let randomValue: number = Math.random()
-    let mask: number = 0x100000000
+    let mask: number = 0x10000000000000
     let result: number = randomValue * mask
     let hexResult: string = result.toString(16)
     return hexResult
