@@ -25,14 +25,6 @@ let riot = require('riot')
     var $ = jQuery
     var publisher = $({})
     var me = this
-    // ...tags['rich-input'] may either be a single Tag instance or an array
-    // of tags => thus [].concat(...) to make sure we always deal with an array
-    var iAmTheFirstInput = [].concat(me.parent.tags['rich-input'])[0] === me
-    if(iAmTheFirstInput) {
-      this.on('mount', function() {
-        me.getInputElement().focus()
-      })
-    }
     me.getTagName = () => {
       return me.opts.type === 'textarea'? 'textarea' : 'input'
     }
