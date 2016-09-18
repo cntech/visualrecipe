@@ -72,15 +72,17 @@ let riot = require('riot')
     })
 
     // serialization support
-    this.setData = (data: Object) => {
-      let ingredient = (<any>data).ingredient
-      this.readyDeferred.promise().then(() => {
-        console.log('food slot ready')
-        this.ingredient = ingredient
-        if(this.ingredient) {
-          state.setDefined(true)
-        }
-      })
+    this.setData = (data: Object | undefined) => {
+      if(data) {
+        let ingredient = (<any>data).ingredient
+        this.readyDeferred.promise().then(() => {
+          console.log('food slot ready')
+          this.ingredient = ingredient
+          if(this.ingredient) {
+            state.setDefined(true)
+          }
+        })
+      }
     }
     this.getData = (): Object => {
       return {
