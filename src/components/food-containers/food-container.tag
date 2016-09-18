@@ -28,6 +28,25 @@ let foodSlot = require('./food-slot')
 
     // food slots
     this.slots = [] // will be filled by this.setFoodContainerType
+    function findSlotNeighbors(slots, slot): Object {
+      let xNeighbors = []
+      let yNeighbors = []
+      slots.forEach((slotInList) => {
+        if(slotInList === slot) {
+          return // do not add myself as my neighbor
+        }
+        if(slotInList.opts.x === slot.opts.x) {
+          (<any>xNeighbors).push(slotInList)
+        }
+        if(slotInList.opts.y === slot.opts.y) {
+          (<any>yNeighbors).push(slotInList)
+        }
+      })
+      return {
+        x: xNeighbors,
+        y: yNeighbors
+      }
+    }
 
     // food container type
     let me = this
@@ -43,6 +62,10 @@ let foodSlot = require('./food-slot')
         me.slots = []
       }
       me.update()
+      let myFoodSlots = [].concat(this.tags['food-slot'] || []) // concat to make sure we get an array
+      myFoodSlots.forEach((slot) => {
+        (<any>slot).setNeighbors(findSlotNeighbors(myFoodSlots, slot))
+      })
       me.readyDeferred.resolve()
     }
     this.getFoodContainerType = (): string => {

@@ -63,9 +63,21 @@ let riot = require('riot')
       let json: string = e.dataTransfer.getData('text/plain')
       let data = JSON.parse(json)
       if(data.ingredient) {
-        this.ingredient = data.ingredient.identifier
-        state.setDefined(true)
+        let identifier: string = data.ingredient.identifier
+        this.setIngredient(identifier)
+        if(e.altKey) {
+          let neighbors = this.neighbors
+          if(neighbors && neighbors.y) {
+            neighbors.y.forEach((neighbor) => {
+              neighbor.setIngredient(identifier)
+            })
+          }
+        }
       }
+    }
+    this.setIngredient = (identifier: string) => {
+      this.ingredient = identifier
+      state.setDefined(true)
     }
     let x: number = parseInt(this.opts.x)
     let y: number = parseInt(this.opts.y)
@@ -79,6 +91,10 @@ let riot = require('riot')
     this.one('mount', () => { // wait for mount, then access food container
       this.readyDeferred.resolve()
     })
+
+    this.setNeighbors = (neighbors) => {
+      this.neighbors = neighbors
+    }
 
     // serialization support
     this.setData = (data: Object | undefined) => {
