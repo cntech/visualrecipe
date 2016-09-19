@@ -20,7 +20,9 @@ require('components/food-containers/food-container-option')
         </div>
       </div>
     </div>
-    <recipe-step each={ steps }></recipe-step>
+    <div class="recipe-steps">
+      <recipe-step each={ steps }></recipe-step>
+    </div>
   </form>
   <script type="text/typescript">
     let path = require<any>('path')
@@ -114,7 +116,7 @@ require('components/food-containers/food-container-option')
 
   </script>
   <style type="text/less" scoped>
-    recipe-step {
+    .recipe-steps {
       text-align: center;
     }
     form {

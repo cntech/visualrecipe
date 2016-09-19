@@ -2,14 +2,9 @@ let riot = require('riot')
 require('components/food-containers/food-container')
 <recipe-step>
   <food-container></food-container>
-  <style type="text/less" scoped>
-    :scope {
-      display: block;
-    }
-  </style>
   <script type="text/typescript">
     let $ = require<any>('jquery')
-  
+
     // take the promise of the following deferred object to see if the tag is completely rendered
     this.readyDeferred = new $.Deferred()
 
@@ -33,4 +28,11 @@ require('components/food-containers/food-container')
       }
     }
   </script>
+  <style type="text/less" scoped>
+    :scope {
+      display: inline-block;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
 </recipe-step>
