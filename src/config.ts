@@ -14,7 +14,7 @@ export class Config {
       databaseTable: 'recipes'
     },
     recipe: <PageConfig>{
-      title: 'Recipe',
+      title: 'Create a Recipe',
       route: 'recipe',
       menuLink: true,
       databaseTable: 'recipes'
