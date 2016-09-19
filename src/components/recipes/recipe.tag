@@ -56,14 +56,13 @@ require('components/food-containers/food-container-option')
     me.submit = (e) => {
       e.preventDefault()
       let data: Object = me.getData()
-      console.log(data)
       if(databaseTable) {
         if(myId) {
           db.updateById(databaseTable, myId, data)
         } else {
           db.create(databaseTable, data)
         }
-        //location.href = path.join('/', Config.pages.recipeTable.route)
+        location.href = path.join('/', Config.pages.recipeTable.route)
       }
     }
 
