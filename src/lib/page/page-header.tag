@@ -26,19 +26,26 @@ require('bootstrap')
           </li>
         </ul>
       </div>
+      <table>
+        <tbody>
+          <tr>
+            <td><food-container-option identifier="pan"></food-container-option></td>
+            <td><food-container-option identifier="pot"></food-container-option></td>
+            <td><ingredient identifier="water"></ingredient></td>
+            <td><ingredient identifier="salt-pepper"></ingredient></td>
+            <td><ingredient identifier="potato"></ingredient></td>
+            <td><ingredient identifier="olive-oil"></ingredient></td>
+            <td><ingredient identifier="onion"></ingredient></td>
+            <td><ingredient identifier="garlic"></ingredient></td>
+            <td><ingredient identifier="red-pepper"></ingredient></td>
+            <td><ingredient identifier="chili"></ingredient></td>
+            <td><ingredient identifier="carrot"></ingredient></td>
+            <td><ingredient identifier="sausage"></ingredient></td>
+            <td><ingredient identifier="meat"></ingredient></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <table>
-      <tbody>
-        <tr>
-          <td><food-container-option identifier="pan"></food-container-option></td>
-          <td><food-container-option identifier="pot"></food-container-option></td>
-          <td><ingredient identifier="apple"></ingredient></td>
-          <td><ingredient identifier="orange"></ingredient></td>
-          <td><ingredient identifier="banana"></ingredient></td>
-          <td><ingredient identifier="pineapple"></ingredient></td>
-        </tr>
-      </tbody>
-    </table>
   </nav>
   <script type="text/typescript">
     let path = require<any>('path')
@@ -65,6 +72,10 @@ require('bootstrap')
       table {
         display: block;
         padding: 15px;
+        padding-left: 0;
+        td {
+          padding-right: 4px;
+        }
       }
     }
   </style>
