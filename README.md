@@ -8,7 +8,7 @@ Webpack + TypeScript
 
 ## Install
 
-Recommended Node.js version: 6.3.x
+Recommended [Node.js](https://nodejs.org) version: 6.3.x
 
 ```
 $ git clone https://github.com/cntech/visualrecipe.git
