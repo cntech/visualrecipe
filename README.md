@@ -1,16 +1,29 @@
 # Visual Recipe
 
-Drag & Drop Recipes for the Browser
+**Drag & Drop Recipes for the Browser**
+
+Webpack + TypeScript
+
+**Please send me feedback via Slack: cntech|Stahlstadt.js**
 
 ## Install
 
-Recommended Node.js version: 5.x
+Recommended Node.js version: 6.3.x
 
 ```
 $ git clone https://github.com/cntech/visualrecipe.git
 $ cd visualrecipe
 $ npm install
+$ npm install -g typings
+$ typings install
+$ npm run serve
 ```
+
+Wait a few seconds until you read "webpack: bundle is now VALID."
+
+Then visit http://localhost:8080/recipe to create a new recipe.
+
+Whenever you change a Tag or TypeScript file, the page automatically reloads (thanks to Webpack Dev Server).
 
 ## Run
 
