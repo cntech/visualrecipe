@@ -7,12 +7,12 @@ let riot = require('riot')
     let slots: FoodSlotConfig[] = []
     let size = 24 // slot size
     let base = {
-      x: size * 1,
-      y: size * 6
+      x: size * 0.5 /* fine tuning */ + 5,
+      y: size * 4.5
     }
     let i = 1
-    for(let y = 0; y < 4; y++) {
-      for(let x = 0; x < 8; x++) {
+    for(let y = 0; y < 2; y++) {
+      for(let x = 0; x < 5; x++) {
         let name: string = String(i)
         slots.push(new FoodSlotConfig(name, base.x+x*size, base.y+y*size))
         i++
