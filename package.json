@@ -4,7 +4,8 @@
   "main": "src/app.js",
   "scripts": {
     "test": "node_modules/.bin/mocha",
-    "start": "node_modules/.bin/webpack-dev-server --hot --inline",
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "develop": "node_modules/.bin/webpack-dev-server --hot --inline",
     "compile": "node_modules/.bin/webpack",
     "compile-tests": "node_modules/.bin/typings install && node_modules/.bin/webpack --config webpack.testing.config.js"
   },
