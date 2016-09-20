@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "src/app.js",
   "scripts": {
+    "test": "node_modules/.bin/mocha",
     "serve": "node_modules/.bin/webpack-dev-server --hot --inline",
     "compile": "node_modules/.bin/webpack",
     "compile-tests": "node_modules/.bin/webpack --config webpack.testing.config.js"
