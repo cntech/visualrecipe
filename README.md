@@ -14,8 +14,6 @@ Recommended [Node.js](https://nodejs.org) version: 6.3.x
 $ git clone https://github.com/cntech/visualrecipe.git
 $ cd visualrecipe
 $ npm install
-$ npm install -g typings
-$ typings install
 $ npm run serve
 ```
 
