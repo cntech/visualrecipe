@@ -9,7 +9,7 @@
     "compile": "node_modules/.bin/webpack",
     "compile-tests": "node_modules/.bin/typings install && node_modules/.bin/webpack --config webpack.testing.config.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "bootstrap": "^3.3.7",
     "chai": "^3.5.0",
     "css-loader": "^0.25.0",
