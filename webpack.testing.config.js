@@ -1,5 +1,6 @@
 var path = require('path')
 var glob = require('glob')
+var tsconfigFile = 'testing.tsconfig.json'
 module.exports = {
   entry: glob.sync('./src/**/*.spec.ts'),
   output: {
@@ -16,7 +17,7 @@ module.exports = {
     loaders: [
       {
         test: /\.ts$/,
-        loader: 'ts'
+        loader: 'ts?configFileName=' + tsconfigFile
       }
     ]
   },

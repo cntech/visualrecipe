@@ -10,6 +10,8 @@
   ],
   "files": [
     "src/app.ts",
-    "src/app.d.ts"
+    "src/app.d.ts",
+    "typings/globals/mocha/index.d.ts",
+    "typings/globals/chai/index.d.ts"
   ]
 }
