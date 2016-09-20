@@ -54,6 +54,8 @@ module.exports = {
   ],
   devtool: 'source-map',
   devServer: {
+    host: process.env.HOST,
+    port: process.env.PORT,
     contentBase: './public',
     historyApiFallback: true
   }
