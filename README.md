@@ -23,13 +23,6 @@ Then visit http://localhost:8080/recipe to create a new recipe.
 
 Whenever you change a Tag or TypeScript file, the page automatically reloads (thanks to Webpack Dev Server).
 
-## Run
-
-```
-$ npm run serve
-```
-Then go to http://localhost:8080 to see it in action.
-
 ## Compile only (optional)
 
 Simply run the Webpack Module Bundler:
