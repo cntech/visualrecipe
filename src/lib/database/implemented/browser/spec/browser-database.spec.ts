@@ -139,6 +139,6 @@ describe('BrowserDatabase', () => {
     let db: BrowserDatabase = installedDummyFruitDatabase()
     db.destroy('fruits', r => r.id == 1) // delete fruit with id 1: the banana
     // apple and orange should have survived:
-    expect(db.get('fruits', r => true).map(r => (<any>r).name)).to.deep.equal(['apple', 'orange'])
+    expect((db.get('fruits', r => true)||[]).map(r => (<any>r).name)).to.deep.equal(['apple', 'orange'])
   })
 })
