@@ -3,6 +3,7 @@ node_modules
 *.js
 public/*
 !webpack.config.js
+!webpack.testing.config.js
 !riot-app.js
 !loaders/*.js
 !public/index.html
