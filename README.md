@@ -14,7 +14,7 @@ Recommended [Node.js](https://nodejs.org) version: 6.3.x
 $ git clone https://github.com/cntech/visualrecipe.git
 $ cd visualrecipe
 $ npm install
-$ npm start
+$ npm run develop
 ```
 
 Wait a few seconds until you read "webpack: bundle is now VALID."
