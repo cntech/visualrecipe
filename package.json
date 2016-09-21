@@ -4,7 +4,7 @@
   "main": "src/app.js",
   "scripts": {
     "test": "node_modules/.bin/mocha",
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "start": "node ./server.js",
     "develop": "node_modules/.bin/webpack-dev-server --hot --inline",
     "compile": "node_modules/.bin/webpack",
     "compile-tests": "node_modules/.bin/typings install && node_modules/.bin/webpack --config webpack.testing.config.js"
@@ -13,6 +13,7 @@
     "bootstrap": "^3.3.7",
     "chai": "^3.5.0",
     "css-loader": "^0.25.0",
+    "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "glob": "^7.0.6",

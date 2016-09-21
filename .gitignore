@@ -7,6 +7,7 @@ public/*
 !riot-app.js
 !loaders/*.js
 !public/index.html
+!server.js
 typings
 
 # OS X
