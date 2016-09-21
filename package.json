@@ -7,7 +7,8 @@
     "start": "node ./server.js",
     "develop": "node_modules/.bin/webpack-dev-server --hot --inline",
     "compile": "node_modules/.bin/webpack",
-    "compile-tests": "node_modules/.bin/typings install && node_modules/.bin/webpack --config webpack.testing.config.js"
+    "compile-tests": "node_modules/.bin/typings install && node_modules/.bin/webpack --config webpack.testing.config.js",
+    "postinstall": "npm run compile"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
